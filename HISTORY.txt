@@ -1,0 +1,45 @@
+$Id: HISTORY.txt,v 1.6 2006/09/13 07:54:23 benno Exp $
+
+SilvaPhotoGallery HISTORY
+=========================
+
+Release 0.9  (2006/09/13):
+=========================
+
+2006/07/03:
+	- _form_translation.py:
+		- Fixed bug cause by incorrect id.
+
+2006/06/29:
+	- i18n/...:
+		- Adjusted to Silva 1.5 (Zope 3 technology).
+	- PhotoGallery.py:
+		- Adjusted to Silva 1.5 (Zope 3 technology).
+
+2006/05/03:
+	- PhotoGallery.py:
+		- Made method getSlideShow() correct for Ligthbox v2.02 and adjusted translations.
+	- www/lightbox.js.dtml:
+		- Added resizeToFit() and slideshow_XXX() functions.
+	- www/photo_gallery_view.pt:
+		- Corrected thumbnail view and slideshow functionality.
+	- www/photo_gallery.css.dtml:
+		- Removed lightbox css tags.
+
+2006/04/26:
+	- PhotoGallery.py:
+		- Integrated resources of Ligthbox v2.02.
+	- www/photo_gallery_view.pt:
+		- Integrated Ligthbox v2.02.
+	- www/gallery_helper_scripts.js.dtml:
+		- Improved switching of display of help text.
+
+2006/04/19:
+	- PhotoGallery.py:
+		- Changed options from 's' to 'sec' in method getSlideShow().
+	- www/captions.xml, lightbox.js.dtml and photo_gallery_view.pt:
+		- Made display of caption of selected/enlarged image dependent on show_caption setting.
+
+2006/04/13:
+	- Initial development based on the code source release on
+	  http://www.mat.ethz.ch/silva/silvaphotogallery/SilvaPhotoGallery.zexp.

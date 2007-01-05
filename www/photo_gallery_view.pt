@@ -1,0 +1,64 @@
+<link rel="stylesheet" type="text/css" media="all" href="lightbox.css" tal:attributes="href here/lightbox.css/absolute_url" />
+<link rel="stylesheet" type="text/css" media="all" href="photo_gallery.css" tal:attributes="href here/photo_gallery.css/absolute_url" />
+
+<script type="text/javascript" src="prototype.js" tal:attributes="src here/prototype.js/absolute_url"></script>
+<script type="text/javascript" src="scriptaculous.js?load=effects" tal:attributes="src python:'%s?load=effects' %getattr(here,'scriptaculous.js').absolute_url()"></script>
+<script type="text/javascript" src="lightbox.js" tal:attributes="src python:'%s?url=%s&amp;show_caption=%s' %(getattr(here,'lightbox.js').absolute_url(), request.URL1, options['caption'])"></script>
+<script type="text/javascript" src="gallery_helper_scripts.js" tal:attributes="src here/gallery_helper_scripts.js/absolute_url"></script>
+
+<span tal:define="language here/getLanguage;
+                  relAttribute python:'lightbox[gallery]';
+                  slide_show_position python:int(options['slide_show_settings']);
+                  help_info_position python:int(options['help_info']);
+                  show_captions python:int(options['caption']);
+                  photos here/getPhotos;
+                  portrait python:[x for x in photos if x.getOrientation()=='portrait' or x.getOrientation()=='square']" 
+      tal:condition="photos" tal:omit-tag="">
+  <p tal:content="python: here.getHint(language)">Click on a photo to see large version.</p>
+  <p>
+    <span tal:omit-tag=""
+         tal:condition="python:slide_show_position == 1"
+         tal:replace="structure python:here.getSlideShow(language, photos[0].absolute_url(), relAttribute)">SlideShowSettings
+    </span>
+    <span tal:omit-tag=""
+         tal:condition="python:help_info_position == 1"
+         tal:replace="structure python:here.getHelpButton(language)">HelpButton
+    </span>
+    <span tal:omit-tag=""
+         tal:condition="python:help_info_position == 1"
+         tal:replace="structure python:here.getHelpInfo(language, slide_show_position)">HelpInfo
+    </span>
+  </p>
+  <div class="tablemargin">
+    <table border="0" cellpadding="0" cellspacing="0"><tr><td>
+      <span tal:repeat="photo photos" tal:omit-tag="">
+        <div id="lightbox_thumbnail" class="thumbnail"
+             tal:attributes="class python:'lightbox_thumbnail '+(portrait and 'portrait' or 'landscape')">
+          <a href="myimage" title="my caption" 
+             tal:attributes="href python:photo.absolute_url(); 
+                             title python:test(show_captions, photo.get_title_or_id(), '');
+                             rel relAttribute">
+            <span tal:replace="structure python:photo.tag(hires=0, thumbnail=1)" />
+          </a>
+          <div id="lightbox_caption" tal:condition="show_captions">
+            <a href="myimage" rel="lightbox" title="my caption" tal:attributes="href photo/absolute_url; title photo/get_title_or_id"><span tal:replace="python:here.getCaption(photo.get_title_or_id())" /></a>
+          </div>
+        </div>
+      </span>
+    </td></tr></table>
+  </div>
+  <p>
+    <span tal:omit-tag=""
+         tal:condition="python:slide_show_position == 2"
+         tal:replace="structure python:here.getSlideShow(language, photos[0].absolute_url(), relAttribute)">SlideShowSettings
+    </span>
+    <span tal:omit-tag=""
+         tal:condition="python:help_info_position == 2"
+         tal:replace="structure python:here.getHelpButton(language)">HelpButton
+    </span>
+    <span tal:omit-tag=""
+         tal:condition="python:help_info_position == 2"
+         tal:replace="structure python:here.getHelpInfo(language, slide_show_position)">HelpInfo
+    </span>
+  </p>
+</span>
