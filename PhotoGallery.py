@@ -95,8 +95,8 @@ class PhotoGallery(CodeSource):
     meta_type = 'Silva Photo Gallery'
     security = ClassSecurityInfo()
     
-    def __init__(self, id, title):
-        CodeSource.inheritedAttribute('__init__')(self, id, title)
+    def __init__(self, id):
+        CodeSource.inheritedAttribute('__init__')(self, id)
         self._script_id = 'view'
         self._data_encoding = 'UTF-8'
         self._description = self.__doc__
@@ -261,7 +261,7 @@ manage_addPhotoGalleryForm = PageTemplateFile(
 
 def manage_addPhotoGallery(context, id, title, REQUEST=None):
     """Add an Inline Viewer"""
-    v = PhotoGallery(id, title)
+    v = PhotoGallery(id)
     v.title = unicode(title, 'UTF-8')
     context._setObject(id, v)
     add_and_edit(context, id, REQUEST)
