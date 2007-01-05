@@ -3,6 +3,11 @@ $Id: CHANGES.txt,v 1.1 2006/10/26 16:09:15 benno Exp $
 SilvaPhotoGallery CHANGES
 =========================
 
+Release 0.9.2  (2006//):
+=========================
+
+    - Removed 'title' from add methods.
+
 Release 0.9.1  (2006//):
 =========================
 
