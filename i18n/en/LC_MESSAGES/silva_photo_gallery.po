@@ -1,0 +1,104 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: Fri Apr 27 10:51:23 2007\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Wim Boucquaert <wim@infrae.com>\n"
+"Language-Team: Silva i18n team <info@infrae.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/translation_files/extract.py\n"
+
+#: /www/photo_gallery_form.form:24
+msgid "Show thumbnails with image captions underneath?"
+msgstr ""
+
+#: /www/photo_gallery_form.form:34
+msgid "Image captions"
+msgstr ""
+
+#: /www/photo_gallery_form.form:51
+msgid "Sets the place of the slide show settings."
+msgstr ""
+
+#: /www/photo_gallery_form.form:61
+msgid "Place of slide show settings"
+msgstr ""
+
+#: /www/photo_gallery_form.form:78
+msgid "Place of help information."
+msgstr ""
+
+#: /www/photo_gallery_form.form:88
+msgid "Help information"
+msgstr ""
+
+#: /www/photo_gallery_view.pt:21
+#: /www/photo_gallery_view.pt:58
+#: /www/photo_gallery_view.pt:161
+msgid "Click on a photo to see large version."
+msgstr ""
+
+#: /www/photo_gallery_view.pt:26
+#: /www/photo_gallery_view.pt:129
+msgid "2sec"
+msgstr ""
+
+#: /www/photo_gallery_view.pt:27
+#: /www/photo_gallery_view.pt:130
+msgid "5sec"
+msgstr ""
+
+#: /www/photo_gallery_view.pt:28
+#: /www/photo_gallery_view.pt:131
+msgid "10sec"
+msgstr ""
+
+#: /www/photo_gallery_view.pt:29
+#: /www/photo_gallery_view.pt:132
+msgid "30sec"
+msgstr ""
+
+#: /www/photo_gallery_view.pt:32
+#: /www/photo_gallery_view.pt:135
+msgid "Note: The manual change of pictures is disabled during slide show."
+msgstr ""
+
+#: /www/photo_gallery_view.pt:35
+#: /www/photo_gallery_view.pt:138
+msgid "Slideshow"
+msgstr ""
+
+#: /www/photo_gallery_view.pt:47
+#: /www/photo_gallery_view.pt:55
+#: /www/photo_gallery_view.pt:150
+#: /www/photo_gallery_view.pt:158
+msgid "Show help"
+msgstr ""
+
+#: /www/photo_gallery_view.pt:63
+#: /www/photo_gallery_view.pt:166
+msgid "Help"
+msgstr ""
+
+#: /www/photo_gallery_view.pt:64
+#: /www/photo_gallery_view.pt:167
+msgid "Click on a photo to see large version or select a delay and click on &quot;Slideshow&quot; to start the slideshow. Click on the right (of left) half of the image to change to the next (previous) image. To close the image or stop the slideshow, click on the cross.<br /> Alternatively, you can use the following keys:<br />"
+msgstr ""
+
+#: /www/photo_gallery_view.pt:72
+#: /www/photo_gallery_view.pt:73
+#: /www/photo_gallery_view.pt:175
+#: /www/photo_gallery_view.pt:176
+msgid "stop slideshow or close image"
+msgstr ""
+
+#: /www/photo_gallery_view.pt:75
+#: /www/photo_gallery_view.pt:178
+msgid "show next image"
+msgstr ""
+
+#: /www/photo_gallery_view.pt:76
+#: /www/photo_gallery_view.pt:179
+msgid "show previous image"
+msgstr ""

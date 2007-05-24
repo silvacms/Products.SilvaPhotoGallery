@@ -3,11 +3,13 @@
 
 import os
 
+from AccessControl import allow_module
+
 from Products.SilvaExternalSources import ExternalSource
 
 import Products.SilvaPhotoGallery.PhotoGallery
 
-def initialize(context):   
+def initialize(context):
     context.registerClass(
         PhotoGallery.PhotoGallery,
         constructors = (PhotoGallery.manage_addPhotoGalleryForm,
@@ -17,4 +19,6 @@ def initialize(context):
                     os.path.dirname(ExternalSource.__file__)
                 ),
                 'www/codesource.png')
-        )    
+        )
+
+allow_module('Products.SilvaPhotoGallery.i18n')

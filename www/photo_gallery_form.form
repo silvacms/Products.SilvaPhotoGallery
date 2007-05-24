@@ -10,7 +10,7 @@
   <encoding>UTF-8</encoding>
   <stored_encoding>ISO-8859-1</stored_encoding>
   <unicode_mode>false</unicode_mode>
-  <i18n_domain>photo_gallery</i18n_domain>
+  <i18n_domain>silva_photo_gallery</i18n_domain>
   <groups>
     <group>
       <title>Default</title>
@@ -36,7 +36,6 @@
           <whitespace_preserve type="int">0</whitespace_preserve>
         </values>
         <tales>
-          <items>python:here.pg_values_i18n(here, 'caption')</items>
         </tales>
         <messages>
           <message name="external_validator_failed">The input failed the external validator.</message>
@@ -64,7 +63,6 @@
           <whitespace_preserve type="int">0</whitespace_preserve>
         </values>
         <tales>
-          <items>python:here.pg_values_i18n(here, 'slide_show_settings')</items>
         </tales>
         <messages>
           <message name="external_validator_failed">The input failed the external validator.</message>
@@ -92,7 +90,6 @@
           <whitespace_preserve type="int">0</whitespace_preserve>
         </values>
         <tales>
-          <items>python:here.pg_values_i18n(here, 'help_info')</items>
         </tales>
         <messages>
           <message name="external_validator_failed">The input failed the external validator.</message>

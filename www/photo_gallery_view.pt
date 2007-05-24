@@ -1,3 +1,7 @@
+<tal:block
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="silva_photo_gallery">
+
 <link rel="stylesheet" type="text/css" media="all" href="lightbox.css" tal:attributes="href here/lightbox.css/absolute_url" />
 <link rel="stylesheet" type="text/css" media="all" href="photo_gallery.css" tal:attributes="href here/photo_gallery.css/absolute_url" />
 
@@ -6,59 +10,177 @@
 <script type="text/javascript" src="lightbox.js" tal:attributes="src python:'%s?url=%s&amp;show_caption=%s' %(getattr(here,'lightbox.js').absolute_url(), request.URL1, options['caption'])"></script>
 <script type="text/javascript" src="gallery_helper_scripts.js" tal:attributes="src here/gallery_helper_scripts.js/absolute_url"></script>
 
-<span tal:define="language here/getLanguage;
-                  relAttribute python:'lightbox[gallery]';
+<span tal:define="relAttribute python:'lightbox[gallery]';
                   slide_show_position python:int(options['slide_show_settings']);
                   help_info_position python:int(options['help_info']);
                   show_captions python:int(options['caption']);
                   photos here/getPhotos;
-                  portrait python:[x for x in photos if x.getOrientation()=='portrait' or x.getOrientation()=='square']" 
-      tal:condition="photos" tal:omit-tag="">
-  <p tal:content="python: here.getHint(language)">Click on a photo to see large version.</p>
-  <p>
-    <span tal:omit-tag=""
-         tal:condition="python:slide_show_position == 1"
-         tal:replace="structure python:here.getSlideShow(language, photos[0].absolute_url(), relAttribute)">SlideShowSettings
-    </span>
-    <span tal:omit-tag=""
-         tal:condition="python:help_info_position == 1"
-         tal:replace="structure python:here.getHelpButton(language)">HelpButton
-    </span>
-    <span tal:omit-tag=""
-         tal:condition="python:help_info_position == 1"
-         tal:replace="structure python:here.getHelpInfo(language, slide_show_position)">HelpInfo
-    </span>
-  </p>
-  <div class="tablemargin">
-    <table border="0" cellpadding="0" cellspacing="0"><tr><td>
-      <span tal:repeat="photo photos" tal:omit-tag="">
-        <div id="lightbox_thumbnail" class="thumbnail"
-             tal:attributes="class python:'lightbox_thumbnail '+(portrait and 'portrait' or 'landscape')">
-          <a href="myimage" title="my caption" 
-             tal:attributes="href python:photo.absolute_url(); 
-                             title python:test(show_captions, photo.get_title_or_id(), '');
-                             rel relAttribute">
-            <span tal:replace="structure python:photo.tag(hires=0, thumbnail=1)" />
+                  portrait python:[x for x in photos if x.getOrientation()=='portrait' or x.getOrientation()=='square']"
+      tal:condition="photos"
+      tal:omit-tag="">
+  <p class="p" i18n:translate="">Click on a photo to see large version.</p>
+
+    <!-- getSlideshow 1 -->
+    <tal:block tal:condition="python:slide_show_position == 1">
+        <select id="timeSelect">
+            <option i18n:translate="" value="2000">2sec</option>
+            <option i18n:translate="" value="5000" selected="selected">5sec</option>
+            <option i18n:translate="" value="10000">10sec</option>
+            <option i18n:translate="" value="30000">30sec</option>
+        </select>
+        <input type="button"
+            onclick="myLightbox.start(document.getElementById('slideshowStartLink'));
+              slide=true; return false;"
+            value="Slideshow"
+            i18n:attributes="value" />&#160;&#160;
+    </tal:block>
+
+    <!-- getHelp 1 -->
+    <tal:block
+      tal:define="img_url here/plus.gif/absolute_url;"
+      tal:condition="python:help_info_position == 1">
+        <p class="p">
+          <a class="nounderline"
+            href="javascript:toggleElement('help')"
+            title="Show help"
+            i18n:attributes="title">
+              <img id="imghelp"
+                tal:attributes="src img_url;"
+                alt="plus" />
           </a>
-          <div id="lightbox_caption" tal:condition="show_captions">
-            <a href="myimage" rel="lightbox" title="my caption" tal:attributes="href photo/absolute_url; title photo/get_title_or_id"><span tal:replace="python:here.getCaption(photo.get_title_or_id())" /></a>
-          </div>
+          <a href="javascript:toggleElement('help')"
+            title="Show help"
+            i18n:attributes="title">
+              <span i18n:translate="">Click on a photo to see large version.</span>
+          </a><br />
+        </p>
+        <!--help 1 -->
+        <div id="txthelp" style="display:none" class="expandable tablemargin">
+            <strong i18n:translate="">Help</strong><br />
+            <span i18n:translate="">
+            Click on a photo to see large version or select a delay and click
+            on &quot;Slideshow&quot; to start the slideshow. Click on the right
+            (of left) half of the image to change to the next (previous) image.
+            To close the image or stop the slideshow, click on the cross.<br />
+            Alternatively, you can use the following keys:<br />
+            </span>
+            <table>
+              <tr><td>x&#160;</td><td i18n:translate="">stop slideshow or close image</td></tr>
+              <tr><td>c&#160;</td><td i18n:translate="">stop slideshow or close image</td></tr>
+              <!--help e -->
+              <tr><td>n&#160;</td><td i18n:translate="">show next image</td></tr>
+              <tr><td>p&#160;</td><td i18n:translate="">show previous image</td></tr>
+            </table>
+            <!--help 3 -->
+            <p  i18n:translate="">
+              Note: The manual change of pictures is disabled during slide show.
+            </p>
         </div>
-      </span>
-    </td></tr></table>
-  </div>
-  <p>
-    <span tal:omit-tag=""
-         tal:condition="python:slide_show_position == 2"
-         tal:replace="structure python:here.getSlideShow(language, photos[0].absolute_url(), relAttribute)">SlideShowSettings
-    </span>
-    <span tal:omit-tag=""
-         tal:condition="python:help_info_position == 2"
-         tal:replace="structure python:here.getHelpButton(language)">HelpButton
-    </span>
-    <span tal:omit-tag=""
-         tal:condition="python:help_info_position == 2"
-         tal:replace="structure python:here.getHelpInfo(language, slide_show_position)">HelpInfo
-    </span>
-  </p>
+    </tal:block>
+
+    <div class="tablemargin">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+      <td>
+        <span tal:repeat="photo photos" tal:omit-tag="">
+          <div id="lightbox_thumbnail" class="thumbnail"
+               tal:attributes="class python:'lightbox_thumbnail '+(portrait and 'portrait' or 'landscape')">
+            <a href="myimage" title="my caption"
+               tal:condition="repeat/photo/start"
+               tal:attributes="href python:photo.absolute_url();
+                               title python:test(show_captions, photo.get_title_or_id(), '');
+                               rel relAttribute;
+                               id string:slideshowStartLink;"
+                i18n:attributes="title">
+                <tal:block i18n:translate="">
+                  <span tal:replace="structure python:photo.tag(hires=0, thumbnail=1)" />
+                </tal:block>
+            </a>
+            <a href="myimage" title="my caption"
+              tal:condition="not:repeat/photo/start"
+              tal:attributes="href python:photo.absolute_url();
+                               title python:test(show_captions, photo.get_title_or_id(), '');
+                               rel relAttribute"
+              i18n:attributes="title">
+              <tal:block i18n:translate="">
+                <span tal:replace="structure python:photo.tag(hires=0, thumbnail=1)" />
+              </tal:block>
+            </a>
+            <div id="lightbox_caption" tal:condition="show_captions">
+              <a href="myimage" rel="lightbox" title="my caption"
+                tal:attributes="href photo/absolute_url;
+                                  title photo/get_title_or_id;
+                                  rel relAttribute"
+                i18n:attributes="title">
+                <tal:block i18n:translate="">
+                  <span tal:replace="python:here.getCaption(photo.get_title_or_id())" />
+                </tal:block>
+              </a>
+            </div>
+          </div>
+        </span>
+      </td>
+      </tr>
+      </table>
+    </div>
+
+    <tal:block tal:condition="python:slide_show_position == 2">
+        <select id="timeSelect">
+            <option i18n:translate="" value="2000">2sec</option>
+            <option i18n:translate="" value="5000" selected="selected">5sec</option>
+            <option i18n:translate="" value="10000">10sec</option>
+            <option i18n:translate="" value="30000">30sec</option>
+          </select>
+            <input type="button"
+                onclick="myLightbox.start(document.getElementById('slideshowStartLink'));
+                  slide=true; return false;"
+                value="Slideshow"
+                i18n:attributes="value" />&#160;&#160;
+    </tal:block>
+
+    <!-- getHelp 2 -->
+    <tal:block
+      tal:define="img_url here/plus.gif/absolute_url;"
+      tal:condition="python:help_info_position == 2">
+        <p class="p">
+          <a class="nounderline"
+            href="javascript:toggleElement('help')"
+            title="Show help"
+            i18n:attributes="title">
+              <img id="imghelp"
+                tal:attributes="src img_url;"
+                alt="plus" />
+          </a>
+          <a href="javascript:toggleElement('help')"
+            title="Show help"
+            i18n:attributes="title">
+              <span i18n:translate="">Click on a photo to see large version.</span>
+          </a><br />
+        </p>
+        <!--help 2 -->
+        <div id="txthelp" style="display:none" class="expandable tablemargin">
+            <strong i18n:translate="">Help</strong><br />
+            <span i18n:translate="">
+            Click on a photo to see large version or select a delay and click
+            on &quot;Slideshow&quot; to start the slideshow. Click on the right
+            (of left) half of the image to change to the next (previous) image.
+            To close the image or stop the slideshow, click on the cross.<br />
+            Alternatively, you can use the following keys:<br />
+            </span>
+            <table>
+              <tr><td>x&#160;</td><td i18n:translate="">stop slideshow or close image</td></tr>
+              <tr><td>c&#160;</td><td i18n:translate="">stop slideshow or close image</td></tr>
+              <!--help e -->
+              <tr><td>n&#160;</td><td i18n:translate="">show next image</td></tr>
+              <tr><td>p&#160;</td><td i18n:translate="">show previous image</td></tr>
+            </table>
+            <!--help 3 -->
+            <p class="p" i18n:translate="">
+              Note: The manual change of pictures is disabled during slide show.
+            </p>
+        </div>
+    </tal:block>
+
 </span>
+
+</tal:block>

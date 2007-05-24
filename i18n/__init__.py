@@ -1,10 +1,10 @@
 """Provides a function called 'translate' that *must* be imported as '_':
 
-    from Products.Silva.i18n import translate as _
+    from Products.SilvaPhotoGallery.i18n import translate as _
 
-and will provide a MessageIDFactory that returns MessageIDs for
+and will provide a MessageFactory that returns Messages for
 i18n'ing Product code and Python scripts.
 """
-from zope.i18nmessageid import MessageIDFactory
+from zope.i18nmessageid import MessageFactory
 
-translate = MessageIDFactory('photo_gallery')
+translate = MessageFactory('silva_photo_gallery')

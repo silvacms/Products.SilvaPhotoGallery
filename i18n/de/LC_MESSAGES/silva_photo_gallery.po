@@ -1,0 +1,101 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: Fri Apr 27 11:52:16 2007\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Wim Boucquaert <wim@infrae.com>\n"
+"Language-Team: Silva i18n team <info@infrae.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/translation_files/extract.py\n"
+
+#: /www/photo_gallery_form.form:24
+msgid "Show thumbnails with image captions underneath?"
+msgstr "Sollen die Minitaturbilder mit Bildunterschriften angezeigt werden?"
+
+#: /www/photo_gallery_form.form:34
+msgid "Image captions"
+msgstr "Bildunterschriften"
+
+#: /www/photo_gallery_form.form:51
+msgid "Sets the place of the slide show settings."
+msgstr "Anzeige der Einstellungen für die Dia-Show."
+
+#: /www/photo_gallery_form.form:61
+msgid "Place of slide show settings"
+msgstr "Einstellungen für die Dia-Show"
+
+#: /www/photo_gallery_form.form:78
+msgid "Place of help information."
+msgstr "Anzeigeort der Hilfe-Informationen."
+
+#: /www/photo_gallery_form.form:88
+msgid "Help information"
+msgstr "Hilfe-Informationen"
+
+#: /www/photo_gallery_view.pt:21 /www/photo_gallery_view.pt:54
+#: /www/photo_gallery_view.pt:157
+msgid "Click on a photo to see large version."
+msgstr "Klicken Sie auf ein Foto, um es in voller Grösse anzusehen."
+
+#: /www/photo_gallery_view.pt:26 /www/photo_gallery_view.pt:129
+msgid "2sec"
+msgstr ""
+
+#: /www/photo_gallery_view.pt:27 /www/photo_gallery_view.pt:130
+msgid "5sec"
+msgstr ""
+
+#: /www/photo_gallery_view.pt:28 /www/photo_gallery_view.pt:131
+msgid "10sec"
+msgstr ""
+
+#: /www/photo_gallery_view.pt:29 /www/photo_gallery_view.pt:132
+msgid "30sec"
+msgstr ""
+
+#: /www/photo_gallery_view.pt:31 /www/photo_gallery_view.pt:134
+msgid "Slideshow"
+msgstr "Dia-Show"
+
+#: /www/photo_gallery_view.pt:43 /www/photo_gallery_view.pt:51
+#: /www/photo_gallery_view.pt:146 /www/photo_gallery_view.pt:154
+msgid "Show help"
+msgstr "Hilfe einblenden"
+
+#: /www/photo_gallery_view.pt:59 /www/photo_gallery_view.pt:162
+msgid "Help"
+msgstr "Hilfe"
+
+#: /www/photo_gallery_view.pt:60 /www/photo_gallery_view.pt:163
+msgid ""
+"Click on a photo to see large version or select a delay and click on &quot;"
+"Slideshow&quot; to start the slideshow. Click on the right (of left) half of "
+"the image to change to the next (previous) image. To close the image or stop "
+"the slideshow, click on the cross.<br /> Alternatively, you can use the "
+"following keys:<br />"
+msgstr ""
+"Klicken Sie auf ein Foto, um es in voller Grösse anzusehen oder wählen Sie "
+"ein Zeitintervall und klicken Sie auf &quot;Dia-Show&quot;, um die Dia-Show "
+"zustarten. Klicken Sie auf die rechte (oder linke) Bildhälfte, um auf das "
+"nächste (vorherige) Bild zu wechseln. Klicken Sie auf das Kreuz, um das Foto "
+"zu schliessen oder die Dia-Show zu beenden.<br />Alternativ können Sie die "
+"folgenden Tasten benutzen:"
+
+#: /www/photo_gallery_view.pt:68 /www/photo_gallery_view.pt:69
+#: /www/photo_gallery_view.pt:171 /www/photo_gallery_view.pt:172
+msgid "stop slideshow or close image"
+msgstr "Dia-Show beenden oder Foto schliessen"
+
+#: /www/photo_gallery_view.pt:71 /www/photo_gallery_view.pt:174
+msgid "show next image"
+msgstr "nächstes Foto zeigen"
+
+#: /www/photo_gallery_view.pt:72 /www/photo_gallery_view.pt:175
+msgid "show previous image"
+msgstr "vorheriges Foto zeigen"
+
+#: /www/photo_gallery_view.pt:75 /www/photo_gallery_view.pt:178
+msgid "Note: The manual change of pictures is disabled during slide show."
+msgstr ""
+"Hinweis: Der manuelle Bildwechsel ist während der Dia-Show abgeschaltet."
