@@ -1,7 +1,7 @@
 SilvaPhotoGallery HISTORY
 =========================
 
-Release infrae-1.1 (2007/05/25):
+Release infrae-1.1 (2007/05/29):
 ================================
 
 2007/05/24
@@ -14,7 +14,7 @@ Release infrae-1.1 (2007/05/25):
 
 2007/05/02:
 
-        - adding class="p" for paragraphs. 
+        - adding class="p" for paragraphs.
 
         - changing translation of outdated "Diaschau" to "Dia-Show".
 
