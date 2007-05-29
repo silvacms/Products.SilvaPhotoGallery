@@ -4,13 +4,17 @@ SilvaPhotoGallery HISTORY
 Release infrae-1.1 (2007/05/29):
 ================================
 
+2007/05/29
+
+        - removed old manage after_add which broke SilvaPhotoGallery
+
 2007/05/24
 
         - made compliant with Silva 2.0
 
 2007/05/04:
 
-	- removed 00 in rendering.
+    	- removed 00 in rendering.
 
 2007/05/02:
 
