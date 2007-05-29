@@ -56,10 +56,6 @@ class PhotoGallery(CodeSource):
         self._data_encoding = 'UTF-8'
         self._description = self.__doc__
 
-    def manage_afterAdd(self, item, container):
-        self._set_form()
-        self._set_views()
-
     security.declareProtected(SilvaPermissions.ChangeSilvaAccess,
                                 'refresh')
     def refresh(self):
