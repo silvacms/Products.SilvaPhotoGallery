@@ -113,21 +113,6 @@ class PhotoGallery(CodeSource):
             pscript.write(text)
 
     security.declareProtected(SilvaPermissions.AccessContentsInformation,
-                                'to_html')
-    def to_html(self, *args, **kwargs):
-        """render the photo gallery"""
-        self.REQUEST.other['model'] = self
-        try:
-            return ustr(getattr(self, 'view')(**kwargs))
-        except:
-            import sys, traceback
-            exc, e, tb = sys.exc_info()
-            tbs = '\n'.join(traceback.format_tb(tb))
-            del tb
-            ret =  '%s - %s<br />\n\n%s<br />' % (exc, e, tbs)
-            return ret
-
-    security.declareProtected(SilvaPermissions.AccessContentsInformation,
                               'getPhotos')
     def getPhotos(self, model=None):
         """Returns a sorted list of photos found in the container.
