@@ -1,7 +1,7 @@
 SilvaPhotoGallery HISTORY
 =========================
 
-Release infrae-1.2 (2007/05/29):
+Release infrae-1.2 (2007/06/28):
 ================================
 
 2007/06/28
