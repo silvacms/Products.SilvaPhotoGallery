@@ -50,11 +50,17 @@ class PhotoGallery(CodeSource):
     meta_type = 'Silva Photo Gallery'
     security = ClassSecurityInfo()
 
+    # we know existing objects were already initialized, but
+    # they didn't have this attribute yet and we don't want
+    # to write an upgrade script because we're lazy :)
+    _is_initialized = True
+
     def __init__(self, id):
         CodeSource.inheritedAttribute('__init__')(self, id)
         self._script_id = 'view'
         self._data_encoding = 'UTF-8'
         self._description = self.__doc__
+        self._is_initialized = False
 
     security.declareProtected(SilvaPermissions.ChangeSilvaAccess,
                                 'refresh')
@@ -147,5 +153,7 @@ def manage_addPhotoGallery(context, id, title, REQUEST=None):
     return ''
 
 def photo_gallery_moved(object, event):
-    object._set_form()
-    object._set_views()
+    if not object._is_initialized:
+        object._set_form()
+        object._set_views()
+        object._is_initialized = True

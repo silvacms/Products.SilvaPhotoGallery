@@ -1,6 +1,14 @@
 SilvaPhotoGallery HISTORY
 =========================
 
+Release infrae-1.3 (2007/07/06):
+================================
+
+2007/07/06
+
+        - fixed removing/adding PhotoGallery CS bug
+          that caused a view allready in use error
+
 Release infrae-1.2 (2007/06/28):
 ================================
 
