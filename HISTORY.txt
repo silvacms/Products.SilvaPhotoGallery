@@ -1,6 +1,8 @@
 SilvaPhotoGallery HISTORY
 =========================
 
+        - adding Hebrew translations. Thanks @ Ofer Weisglass
+
 Release infrae-1.3 (2007/07/06):
 ================================
 
