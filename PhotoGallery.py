@@ -1,8 +1,6 @@
 # Copyright (c) 2003-2006 ETH Zurich, ID-TIM. Written by Benno Luthiger. All rights reserved.
 # See also LICENSE.txt
 # Inspired by Marc's SilvaPhotoGallery Code Source (some code was copied from that product too).
-# i18n-ed by Wim Boucquaert wim@infrae.com thanks to Wirtschaftsuniversität Wien
-# for making the i18n-ing possible
 
 import os
 
