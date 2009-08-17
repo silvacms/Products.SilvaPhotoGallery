@@ -1,1 +1,1 @@
-SilvaPhotoGallery infrae-1.4 unreleased
+SilvaPhotoGallery infrae-1.4

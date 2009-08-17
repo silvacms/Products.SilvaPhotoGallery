@@ -1,4 +1,4 @@
-Copyright (c) 2006, IT Services, ETH Zurich. All rights reserved.
+Copyright (c) 2006-2009, IT Services, ETH Zurich. All rights reserved.
 See also LICENSE.txt
 
 Meta::
@@ -6,7 +6,7 @@ Meta::
   Valid for:  Silva Photo Gallery 1.0+
   Author:     Benno Luthiger, based on the Silva CodeSource on
               http://www.mat.ethz.ch/silva/silvaphotogallery/SilvaPhotoGallery.zexp
-              Modified by Lorenz Textor
+              Modified by Lorenz Textor, Infrae
 
 Silva Photo Gallery
 
