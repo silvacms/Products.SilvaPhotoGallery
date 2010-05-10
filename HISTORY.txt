@@ -1,6 +1,11 @@
 SilvaPhotoGallery HISTORY
 =========================
 
+Release infrae-1.6 (unreleased):
+================================
+
+  - ...
+
 Release infrae-1.5 (2010/05/10):
 ================================
 
