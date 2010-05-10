@@ -1,7 +1,7 @@
 SilvaPhotoGallery HISTORY
 =========================
 
-Release infrae-1.5 (unreleased):
+Release infrae-1.5 (2010/05/10):
 ================================
 
   - updating the javascript so it also hides object tags
