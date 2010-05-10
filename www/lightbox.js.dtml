@@ -323,9 +323,12 @@ Lightbox.prototype = {
 	//	start()
 	//	Display overlay and lightbox. If image is part of a set, add siblings to imageArray.
 	//
-	start: function(imageLink) {	
+	start: function(imageLink) {
 
 		hideSelectBoxes();
+
+	        // we hide possible objects that interfear with slideshow 
+		hideObjects();
 
 		// stretch overlay to fill page and fade in
 		var arrayPageSize = getPageSize();
@@ -573,6 +576,7 @@ Lightbox.prototype = {
 		Element.hide('lightbox');
 		new Effect.Fade('overlay', { duration: 0.2});
 		showSelectBoxes();
+		showObjects();
 		slideshow_stop();  // added by Benno Luthiger
 	}
 }
@@ -688,12 +692,26 @@ function showSelectBoxes(){
 	}
 }
 
+function showObjects(){
+	objects = document.getElementsByTagName("object");
+	for (i = 0; i != objects.length; i++) {
+		objects[i].style.visibility = "visible";
+	}
+}
+
 // ---------------------------------------------------
 
 function hideSelectBoxes(){
 	selects = document.getElementsByTagName("select");
 	for (i = 0; i != selects.length; i++) {
 		selects[i].style.visibility = "hidden";
+	}
+}
+
+function hideObjects(){
+	objects = document.getElementsByTagName("object");
+	for (i = 0; i != objects.length; i++) {
+		objects[i].style.visibility = "hidden";
 	}
 }
 
