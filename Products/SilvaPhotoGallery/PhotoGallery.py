@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright (c) 2003-2006 ETH Zurich, ID-TIM. Written by Benno Luthiger. All rights reserved.
 # See also LICENSE.txt
 # Inspired by Marc's SilvaPhotoGallery Code Source (some code was copied from that product too).
@@ -7,7 +8,7 @@
 import os
 
 #Zope
-from Globals import InitializeClass, package_home
+from App.class_init import InitializeClass
 from AccessControl import ClassSecurityInfo
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 from Products.PageTemplates.ZopePageTemplate import ZopePageTemplate
@@ -31,7 +32,7 @@ _python = [] #['captions.xml']
 _images = ['blank.gif', 'close.gif', 'loading.gif', 'minus.gif', 'next.gif', 'overlay.png', 'plus.gif', 'prev.gif']
 
 pjoin = os.path.join
-_phome = package_home(globals())
+_phome = os.path.dirname(__file__)
 _folder = 'www'
 
 
@@ -45,18 +46,14 @@ def ustr(x):
 class PhotoGallery(CodeSource):
     """A photo gallery to show thumbnails and the original pictures within a Silva document.
     """
-
     implements(IExternalSource)
     meta_type = 'Silva Photo Gallery'
     security = ClassSecurityInfo()
 
-    # we know existing objects were already initialized, but
-    # they didn't have this attribute yet and we don't want
-    # to write an upgrade script because we're lazy :)
     _is_initialized = True
 
     def __init__(self, id):
-        CodeSource.inheritedAttribute('__init__')(self, id)
+        super(PhotoGallery, self).__init__(id)
         self._script_id = 'view'
         self._data_encoding = 'UTF-8'
         self._description = self.__doc__
