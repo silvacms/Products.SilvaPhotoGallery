@@ -47,7 +47,7 @@ class PhotoGallery(CodeSource):
     silvaconf.zmi_addable(True)
     silvaconf.factory('manage_addPhotoGalleryForm')
     silvaconf.factory('manage_addPhotoGallery')
-    meta_type = 'Silva Photo Gallery'
+    meta_type = 'Silva Photo Gallery Source'
     security = ClassSecurityInfo()
 
     _is_initialized = True
