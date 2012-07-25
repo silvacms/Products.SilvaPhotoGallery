@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2003-2006 ETH Zurich, ID-TIM. Written by Benno Luthiger. All rights reserved.
 # See also LICENSE.txt
-# Inspired by Marc's SilvaPhotoGallery Code Source (some code was copied from that product too).
-# i18n-ed by Wim Boucquaert wim@infrae.com thanks to Wirtschaftsuniversität Wien
-# for making the i18n-ing possible
+# Inspired by Marc's SilvaPhotoGallery Code Source (some code was
+# copied from that product too).  i18n-ed by Wim Boucquaert
+# wim@infrae.com thanks to Wirtschaftsuniversität Wien for making the
+# i18n-ing possible
 
 import os
 
@@ -12,11 +13,8 @@ from App.class_init import InitializeClass
 from AccessControl import ClassSecurityInfo
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 from Products.PageTemplates.ZopePageTemplate import ZopePageTemplate
-from zope.interface import implements
-from OFS.Image import Image
 
 #Silva
-from Products.SilvaExternalSources.interfaces import IExternalSource
 from Products.SilvaExternalSources.CodeSource import CodeSource
 from Products.Silva import SilvaPermissions
 from Products.Silva.helpers import add_and_edit
@@ -25,28 +23,30 @@ from Products.Silva.helpers import add_and_edit
 from Products.Formulator.Form import ZMIForm
 from Products.Formulator.XMLToForm import XMLToForm
 
-#scripts
-_scripts = ['gallery_helper_scripts.js', 'lightbox.js', 'lightbox.css', 'photo_gallery.css']
-_files = ['prototype.js', 'scriptaculous.js', 'effects.js']
-_python = [] #['captions.xml']
-_images = ['blank.gif', 'close.gif', 'loading.gif', 'minus.gif', 'next.gif', 'overlay.png', 'plus.gif', 'prev.gif']
+from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+from silva.core.interfaces import IImage
+from silva.core import conf as silvaconf
+from silva.fanstatic import need
 
-pjoin = os.path.join
-_phome = os.path.dirname(__file__)
-_folder = 'www'
+_home = os.path.join(os.path.dirname(__file__), 'www')
 
 
-def ustr(x):
-    if type(x) == unicode:
-        return x
-    elif type(x) == str:
-        return unicode(x, 'UTF-8')
-    return str(x)
+class IPhotoGalleryResources(IDefaultBrowserLayer):
+    silvaconf.resource('lightbox.css')
+    silvaconf.resource('photo_gallery.css')
+    silvaconf.resource('prototype.js')
+    silvaconf.resource('effects.js')
+    silvaconf.resource('lightbox.js')
+    silvaconf.resource('gallery_helper_scripts.js')
+
 
 class PhotoGallery(CodeSource):
-    """A photo gallery to show thumbnails and the original pictures within a Silva document.
+    """A photo gallery to show thumbnails and the original pictures
+    within a Silva document.
     """
-    implements(IExternalSource)
+    silvaconf.zmi_addable(True)
+    silvaconf.factory('manage_addPhotoGalleryForm')
+    silvaconf.factory('manage_addPhotoGallery')
     meta_type = 'Silva Photo Gallery'
     security = ClassSecurityInfo()
 
@@ -71,70 +71,33 @@ class PhotoGallery(CodeSource):
 
     def _set_form(self):
         self.parameters = ZMIForm('form', 'Properties Form')
-        f = open(pjoin(_phome, _folder, 'photo_gallery_form.form'))
-        XMLToForm(f.read(), self.parameters)
-        f.close()
+        with open(os.path.join(_home, 'photo_gallery_form.form')) as form:
+            XMLToForm(form.read(), self.parameters)
 
     def _set_views(self):
-        f = open(pjoin(_phome, _folder, 'photo_gallery_view.pt'))
-        self._setObject('view', ZopePageTemplate('view', f.read()))
-        f.close()
+        with open(os.path.join(_home, 'photo_gallery_view.pt')) as template:
+            self._setObject('view', ZopePageTemplate('view', template.read()))
 
-        self._add_images()
-        self._add_dtml()
-        self._add_file()
-        self._add_python()
-
-    def _add_images(self):
-        for image in _images:
-            f = open(pjoin(_phome, _folder, image), 'rb')
-            self._setObject(image, Image(image, image, f))
-            f.close()
-
-    def _add_dtml(self):
-        for script in _scripts:
-            f = open(pjoin(_phome, _folder, script + '.dtml'), 'rb')
-            text = f.read()
-            f.close()
-            self.manage_addDTMLMethod(script)
-            getattr(self, script).manage_edit(text, '')
-
-    def _add_file(self):
-        for file in _files:
-            f = open(pjoin(_phome, _folder, file), 'rb')
-            text = f.read()
-            f.close()
-            self.manage_addFile(id=file, file=text, content_type='application/x-javascript')
-
-    def _add_python(self):
-        for script in _python:
-            f = open(pjoin(_phome, _folder, script), 'rb')
-            text = f.read()
-            f.close()
-            self.manage_addProduct['PythonScripts'].manage_addPythonScript(script)
-            pscript = getattr(self, script)
-            pscript.write(text)
+    security.declareProtected(SilvaPermissions.AccessContentsInformation,
+                              'includeResources')
+    def includeResources(self):
+        need(IPhotoGalleryResources)
+        return u''
 
     security.declareProtected(SilvaPermissions.AccessContentsInformation,
                               'getPhotos')
-    def getPhotos(self, model=None):
+    def getPhotos(self, model):
         """Returns a sorted list of photos found in the container.
         """
-        try:
-            if not model:
-                model = self.REQUEST.model
-            photos = model.get_container().objectValues('Silva Image')
-        except:
-            pass
-        photos.sort(lambda x,y : cmp(x.getId(),y.getId()))
-        return photos
+        return model.get_container().get_non_publishables(IImage)
 
     security.declarePublic('getCaption')
     def getCaption(self, caption):
         lenCaption = 42
         if len(caption) < lenCaption:
             return caption
-        return caption[:lenCaption-3] + '...'
+        return caption[:lenCaption-3].rstrip() + '...'
+
 
 InitializeClass(PhotoGallery)
 

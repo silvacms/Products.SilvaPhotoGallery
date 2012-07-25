@@ -2,20 +2,14 @@
   xmlns:i18n="http://xml.zope.org/namespaces/i18n"
   i18n:domain="silva_photo_gallery">
 
-<link rel="stylesheet" type="text/css" media="all" href="lightbox.css" tal:attributes="href here/lightbox.css/absolute_url" />
-<link rel="stylesheet" type="text/css" media="all" href="photo_gallery.css" tal:attributes="href here/photo_gallery.css/absolute_url" />
-
-<script type="text/javascript" src="prototype.js" tal:attributes="src here/prototype.js/absolute_url"></script>
-<script type="text/javascript" src="scriptaculous.js?load=effects" tal:attributes="src python:'%s?load=effects' %getattr(here,'scriptaculous.js').absolute_url()"></script>
-<script type="text/javascript" src="lightbox.js" tal:attributes="src python:'%s?url=%s&amp;show_caption=%s' %(getattr(here,'lightbox.js').absolute_url(), request.URL1, options['caption'])"></script>
-<script type="text/javascript" src="gallery_helper_scripts.js" tal:attributes="src here/gallery_helper_scripts.js/absolute_url"></script>
+  <tal:resources tal:replace="here/includeResources" />
 
 <span tal:define="relAttribute python:'lightbox[gallery]';
                   slide_show_position python:int(options['slide_show_settings']);
                   help_info_position python:int(options['help_info']);
                   show_captions python:int(options['caption']);
-                  photos here/getPhotos;
-                  portrait python:[x for x in photos if x.getOrientation()=='portrait' or x.getOrientation()=='square']"
+                  photos python:here.getPhotos(options['model']);
+                  portrait python:[x for x in photos if x.get_orientation()=='portrait' or x.get_orientation()=='square']"
       tal:condition="photos"
       tal:omit-tag="">
   <p class="p" i18n:translate="">Click on a photo to see large version.</p>
@@ -37,7 +31,6 @@
 
     <!-- getHelp 1 -->
     <tal:block
-      tal:define="img_url here/plus.gif/absolute_url;"
       tal:condition="python:help_info_position == 1">
         <p class="p">
           <a class="nounderline"
@@ -45,7 +38,7 @@
             title="Show help"
             i18n:attributes="title">
               <img id="imghelp"
-                tal:attributes="src img_url;"
+                tal:attributes="src string:${here/absolute_url}/++static++/SilvaPhotoGallery/plus.gif;"
                 alt="plus" />
           </a>
           <a href="javascript:toggleElement('help')"
@@ -140,7 +133,6 @@
 
     <!-- getHelp 2 -->
     <tal:block
-      tal:define="img_url here/plus.gif/absolute_url;"
       tal:condition="python:help_info_position == 2">
         <p class="p">
           <a class="nounderline"
@@ -148,7 +140,7 @@
             title="Show help"
             i18n:attributes="title">
               <img id="imghelp"
-                tal:attributes="src img_url;"
+                tal:attributes="src string:${here/absolute_url}/++static++/SilvaPhotoGallery/plus.gif"
                 alt="plus" />
           </a>
           <a href="javascript:toggleElement('help')"

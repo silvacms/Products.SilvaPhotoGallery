@@ -1,17 +1,20 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:i18n="http://namespaces.zope.org/i18n"
-    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:grok="http://namespaces.zope.org/grok"
     i18n_domain="silva_photo_gallery">
 
-  <!-- i18n -->
+  <include package="Products.Silva" />
+  <include package="Products.SilvaExternalSources" />
+
+  <grok:grok package="." />
   <i18n:registerTranslations directory="i18n" />
 
   <subscriber
-      for=".PhotoGallery.PhotoGallery
-           zope.app.container.interfaces.IObjectMovedEvent"
-      handler=".PhotoGallery.photo_gallery_moved" 
-  />
+     for=".PhotoGallery.PhotoGallery
+          zope.lifecycleevent.interfaces.IObjectMovedEvent"
+     handler=".PhotoGallery.photo_gallery_moved"
+     />
 
-  
+
 </configure>

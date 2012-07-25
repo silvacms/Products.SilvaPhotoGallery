@@ -1,8 +1,8 @@
 if (document.images) {
     var imagePlus = new Image(9,9);
     var imageMinus = new Image(9,9);
-    imagePlus.src = "<dtml-var "_.getitem('plus.gif').absolute_url()">";
-    imageMinus.src = "<dtml-var "_.getitem('minus.gif').absolute_url()">";
+    imagePlus.src = "/++static++/Products.SilvaPhotoGallery/plus.gif";
+    imageMinus.src = "/++static++/Products.SilvaPhotoGallery/minus.gif";
 }
 
 function toggleElement(id) {

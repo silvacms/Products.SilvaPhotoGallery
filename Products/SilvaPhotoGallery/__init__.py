@@ -1,24 +1,14 @@
 # Copyright (c) 2003 ETH ID-TIM. All rights reserved.
 # See also LICENSE.txt
 
-import os
 
 from AccessControl import allow_module
+from silva.core import conf as silvaconf
 
-from Products.SilvaExternalSources import ExternalSource
+silvaconf.extension_name('SilvaPhotoGallery')
+silvaconf.extension_title('Silva PhotoGallery')
+silvaconf.extension_depends(["Silva", "SilvaExternalSources"])
+silvaconf.extension_system()
 
-import Products.SilvaPhotoGallery.PhotoGallery
-
-def initialize(context):
-    context.registerClass(
-        PhotoGallery.PhotoGallery,
-        constructors = (PhotoGallery.manage_addPhotoGalleryForm,
-                        PhotoGallery.manage_addPhotoGallery),
-        icon = os.path.join(
-                os.path.abspath(
-                    os.path.dirname(ExternalSource.__file__)
-                ),
-                'www/codesource.png')
-        )
 
 allow_module('Products.SilvaPhotoGallery.i18n')
