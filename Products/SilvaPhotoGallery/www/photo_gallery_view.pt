@@ -38,7 +38,7 @@
             title="Show help"
             i18n:attributes="title">
               <img id="imghelp"
-                tal:attributes="src string:${here/absolute_url}/++static++/SilvaPhotoGallery/plus.gif;"
+                tal:attributes="src string:${here/absolute_url}/++static++/Products.SilvaPhotoGallery/plus.gif;"
                 alt="plus" />
           </a>
           <a href="javascript:toggleElement('help')"
@@ -140,7 +140,7 @@
             title="Show help"
             i18n:attributes="title">
               <img id="imghelp"
-                tal:attributes="src string:${here/absolute_url}/++static++/SilvaPhotoGallery/plus.gif"
+                tal:attributes="src string:${here/absolute_url}/++static++/Products.SilvaPhotoGallery/plus.gif"
                 alt="plus" />
           </a>
           <a href="javascript:toggleElement('help')"
