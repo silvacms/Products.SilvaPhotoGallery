@@ -16,7 +16,7 @@ def product_readme(filename):
 
 setup(name='Products.SilvaPhotoGallery',
       version=version,
-      description="News extension for Silva",
+      description="(Deprecated) Photogallery code source for Silva CMS",
       long_description=product_readme("README.txt") + "\n" +
                        product_readme("HISTORY.txt"),
 
@@ -25,17 +25,16 @@ setup(name='Products.SilvaPhotoGallery',
               "Programming Language :: Python",
               "Topic :: Software Development :: Libraries :: Python Modules",
               ],
-      keywords='news silva zope2',
+      keywords='silva photo gallery deprecated',
       author='Infrae',
       author_email='info@infrae.com',
-      url='http://infrae.com/products/silva',
+      url='https://github.com/silvacms/Products.SilvaPhotoGallery',
       license='BSD',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['Products'],
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-        'Products.Silva',
-        'Products.SilvaPhotoGallery'
+          'Products.Silva',
         ],
       )
